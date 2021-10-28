@@ -3,7 +3,7 @@ const card = document.querySelector(".card");
 const details = document.querySelector(".details");
 const icon = document.querySelector(".icon img");
 const time = document.querySelector("img.time");
-const local = document.querySelector(".local");
+// const local = document.querySelector(".local");
 const updateUI = (data) => {
   const cityDetails = data.cityDetails;
   const cityWeather = data.cityWeather;
@@ -11,15 +11,11 @@ const updateUI = (data) => {
   //const {cityDetails, cityWeather} = data;
   localStorage.setItem("name", cityDetails.EnglishName);
   localStorage.setItem("temp", cityWeather.Temperature.Metric.Value);
+  localStorage.setItem("type", cityWeather.WeatherText);
+  localStorage.setItem("icon", cityWeather.WeatherIcon);
+  localStorage.setItem("check", cityWeather.IsDayTime);
   console.log(cityDetails);
   console.log(cityWeather);
-  const localname = localStorage.name;
-  const localtemp = localStorage.temp;
-  //   const w = localStorage.weather;
-
-  local.innerHTML = `
-      <h5 class="local-in">last city searched was ${localname} with ${localtemp}°C</h5>
-      `;
   details.innerHTML = `
         <h5 class="my-3">${cityDetails.EnglishName}</h5>
         <div class="my-3">${cityWeather.WeatherText}</div>
@@ -48,11 +44,37 @@ const updateUI = (data) => {
 };
 if (localStorage.length != 0) {
   const localname = localStorage.name;
+  const localtype = localStorage.type;
   const localtemp = localStorage.temp;
+  const localicon = localStorage.icon;
+  const isdaytime = localStorage.check;
+  console.log(isdaytime);
   //   const w = localStorage.weather;
-  local.innerHTML = `
-    <h5 class="efg">last city searched was ${localname} with ${localtemp}°C</h5>
+  details.innerHTML = `
+        <h5 class="my-3">${localname}</h5>
+        <div class="my-3">${localtype}</div>
+        <div class="display-4 my-4">
+        <span>${localtemp}</span>
+        <span>&deg;C</span>
+        </div>
     `;
+  const iconS = `img/icons/${localicon}.svg`;
+  icon.setAttribute("src", iconS);
+
+  let imgTimeSrc = null;
+  if (isdaytime=="true") {
+    imgTimeSrc = "img/day.svg";
+  } else {
+    imgTimeSrc = "img/night.svg";
+  }
+  time.setAttribute("src", imgTimeSrc);
+
+  // const imgTimeS = isdaytime ? "img/day.svg" : "img/night.svg";
+  // time.setAttribute("src", imgTimeS);
+
+  if (card.classList.contains("d-none")) {
+    card.classList.remove("d-none");
+  }
 }
 const updateCity = async (city) => {
   const cityDetails = await getCity(city);
