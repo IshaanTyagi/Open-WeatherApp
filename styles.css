@@ -1,19 +1,36 @@
-body{
-    background: #eeedec;
-    letter-spacing: 0.2em;
-    font-size: 0.8em;
+body {
+  background: #eeedec;
+  letter-spacing: 0.2em;
+  font-size: 0.8em;
 }
-.container{
-    max-width: 400px;
+.container {
+  height: 100vh;
+  width: 40%;
 }
-.form-control{
+.form-control {
   margin-top: 10px;
-} 
-.icon{
-  position:relative;
+}
+.icon {
+  position: relative;
   top: -50px;
   border-radius: 50%;
-  width:100px;
+  width: 100px;
   margin-bottom: -50px;
 }
-
+.time {
+  height: 60vh;
+}
+.card {
+  width: fit-content;
+  margin: auto;
+}
+.my-4 {
+  margin-top: 0rem !important;
+  margin-bottom: 0.7rem !important;
+}
+.local {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
