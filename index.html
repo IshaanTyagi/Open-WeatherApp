@@ -11,12 +11,17 @@
       integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
       crossorigin="anonymous"
     />
-
+    <link rel="stylesheet" href="darkstyles.css" />
     <link rel="stylesheet" href="styles.css" />
 
     <title>Vanilla Weather</title>
   </head>
   <body>
+    <input type="checkbox" class="checkbox" id="checkBox" />
+      <label class="label" for="checkBox">
+        <div class="ball"></div>
+      </label>
+    </div>
     <div class="container my-5 mx-auto">
       <h1 class="text-muted text-center my-4">Vanilla Weather</h1>
 
@@ -45,7 +50,7 @@
       <div class="local">
       </div>
     </div>
-
+    <script src="scripts/darkstyles.js"></script>
     <script src="scripts/forecast.js"></script>
     <script src="scripts/app.js"></script>
   </body>
